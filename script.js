@@ -23,17 +23,12 @@ document.getElementById("add-task-button")
         let taskList = document.getElementById("task-list");
         let inputTask = document.getElementById("input-task");
         let li = document.createElement("li");
-        li.innerHTML = `<input type="checkbox">
+        li.innerHTML = 
+                `<input type="checkbox">
                 <span class="task">${inputTask.value}</span>
                 <button class="delete-btn" >+</button>`;
         taskList.append(li);
         inputTask.value = "";
-
-
-        document.querySelector("#task-list li:last-child .delete-btn")
-            .addEventListener("click", function () {
-                this.parentNode.remove();
-            });
 
 
         document.querySelector("#task-list li:last-child input[type=checkbox]")
@@ -41,23 +36,42 @@ document.getElementById("add-task-button")
                 if (this.classList.contains("checked")) {
                     this.classList.remove("checked");
                     this.removeAttribute("checked");
-                    // this.parentNode.innerHTML = this.parentNode
-                    //     .innerHTML.replace("checked", "");
                 } else {
                     this.classList.add("checked");
 
                 }
-
+                updateLocalStorageTasks();
             });
 
-        tasks = [];
-        for (let task of document.querySelectorAll("li")) {
-            tasks.push(task.innerHTML);
-        }
+            document.querySelector("#task-list li:last-child .delete-btn")
+            .addEventListener("click", function () {
+                this.parentNode.remove();
+                updateLocalStorageTasks();
+            });
 
-        localStorage.setItem("tasks", JSON.stringify(tasks));
+        updateLocalStorageTasks();
+
+        // tasks = [];
+        // for (let task of document.querySelectorAll("li")) {
+        //     tasks.push(task.innerHTML);
+        // }
+
+        // localStorage.setItem("tasks", JSON.stringify(tasks));
 
     });
+
+for (let button of document.querySelectorAll(".delete-btn")) {
+    button.addEventListener("click", function () {
+        button.parentNode.remove();
+        updateLocalStorageTasks();
+        // tasks = [];
+        // for (let task of document.querySelectorAll("li")) {
+        //     tasks.push(task.innerHTML);
+        // }
+
+        // localStorage.setItem("tasks", JSON.stringify(tasks));
+    });
+}
 
 
 for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
@@ -72,24 +86,23 @@ for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
             }
 
 
-            tasks = [];
-            for (let task of document.querySelectorAll("li")) {
-                tasks.push(task.innerHTML);
-            }
+            // tasks = [];
+            // for (let task of document.querySelectorAll("li")) {
+            //     tasks.push(task.innerHTML);
+            // }
 
-            localStorage.setItem("tasks", JSON.stringify(tasks));
+            // localStorage.setItem("tasks", JSON.stringify(tasks));
+            updateLocalStorageTasks();
         });
 }
 
+function updateLocalStorageTasks() {
+    tasks = [];
+    for (let task of document.querySelectorAll("li")) {
+        tasks.push(task.innerHTML);
+    }
 
-for (let button of document.querySelectorAll(".delete-btn")) {
-    button.addEventListener("click", function () {
-        button.parentNode.remove();
-        tasks = [];
-        for (let task of document.querySelectorAll("li")) {
-            tasks.push(task.innerHTML);
-        }
-
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+
