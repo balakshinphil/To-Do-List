@@ -3,6 +3,9 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+.container {
     width: max-content;
     margin: 0 auto;
 }
@@ -17,6 +20,10 @@ body {
     border-bottom: 2px solid #393b99;
     min-width: 350px;
     padding: 7px;
+}
+
+#input-task::placeholder {
+    text-transform: capitalize;
 }
 
 #add-task-button {
