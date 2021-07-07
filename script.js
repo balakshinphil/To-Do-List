@@ -53,6 +53,7 @@ document.getElementById("add-task-button")
 for (let button of document.querySelectorAll(".delete-btn")) {
     button.addEventListener("click", function () {
         button.parentNode.remove();
+        updateLocalStorageTasks();
     });
 }
 
@@ -65,7 +66,9 @@ for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
             } else {
                 checkbox.classList.add("checked");
             }
+            updateLocalStorageTasks();
         });
+        
 }
 
 function updateLocalStorageTasks() {
