@@ -48,28 +48,11 @@ document.getElementById("add-task-button")
                 this.parentNode.remove();
                 updateLocalStorageTasks();
             });
-
-        updateLocalStorageTasks();
-
-        // tasks = [];
-        // for (let task of document.querySelectorAll("li")) {
-        //     tasks.push(task.innerHTML);
-        // }
-
-        // localStorage.setItem("tasks", JSON.stringify(tasks));
-
     });
 
 for (let button of document.querySelectorAll(".delete-btn")) {
     button.addEventListener("click", function () {
         button.parentNode.remove();
-        updateLocalStorageTasks();
-        // tasks = [];
-        // for (let task of document.querySelectorAll("li")) {
-        //     tasks.push(task.innerHTML);
-        // }
-
-        // localStorage.setItem("tasks", JSON.stringify(tasks));
     });
 }
 
@@ -79,20 +62,9 @@ for (let checkbox of document.querySelectorAll("input[type=checkbox]")) {
             if (checkbox.classList.contains("checked")) {
                 checkbox.classList.remove("checked");
                 checkbox.removeAttribute("checked");
-                // checkbox.parentNode.innerHTML = checkbox.parentNode
-                //     .innerHTML.replace("checked", "");
             } else {
                 checkbox.classList.add("checked");
             }
-
-
-            // tasks = [];
-            // for (let task of document.querySelectorAll("li")) {
-            //     tasks.push(task.innerHTML);
-            // }
-
-            // localStorage.setItem("tasks", JSON.stringify(tasks));
-            updateLocalStorageTasks();
         });
 }
 
