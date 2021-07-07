@@ -48,6 +48,8 @@ document.getElementById("add-task-button")
                 this.parentNode.remove();
                 updateLocalStorageTasks();
             });
+
+        updateLocalStorageTasks();
     });
 
 for (let button of document.querySelectorAll(".delete-btn")) {
